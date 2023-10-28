@@ -32,7 +32,7 @@
   <p>
     <a href="https://twoyi.io">
       <img
-        src="https://github.com/MaazArfi/Custom-android.intent.action.VIEW/blob/master/app/src/main/assets/msf_screen.jpeg?raw=true"
+        src="https://github.com/MaazArfi/Custom-Intent.createChooser-Android/blob/main/msf_screen.jpeg?raw=true"
         alt="Screenshot"
         width="25%"
       />
@@ -58,24 +58,6 @@ This library is a lightweight. It runs as a normal app on Android. Additionally,
 3. Starting up app is very fast (within three seconds) except for the initialization process.
 4. This is an open source project.
 5. The internal system of this app will be fully customizable. Because its system is open source, you can fork the project to compile your own system. You can also customize the class components, such as the dynamic string array for app packages and other special features.
-
-## Additional Dependencies
-
-In this project we have used [Sugar](https://github.com/chennaione/sugar) to work with Android Database to cache data and save time and efforts and also maintain smoothness of app
-it is not mandatory to use Sugar you can use [Room](https://developer.android.com/jetpack/androidx/releases/room) or [SQLite](https://developer.android.com/training/data-storage/sqlite) also.
-
-1. Sugar is intended to simplify the interaction with databases in Android.
-2. It eliminates writing queries to interact with db.
-3. It takes care of creating your database.
-4. It manages object relationships too.
-5. It provides you with clear and simple APIs for db operations
-
-Why **Android Database cache ?**.
-
-Caching is like having a bookmark. Imagine if every time you opened a book, you had to start from the first page and read through to find where you left off. That would be inefficient and time-consuming.Similarly,here in this app we also cache data and store a temporary copy of frequently accessed information. This will helps in several ways:
-
-1. Faster Access: Instead of fetching all installed apps on the user device device everytime, the app can quickly retrieve it from the cache. It's like having a cheat sheet ready.
-2. This way we can (`Improved User Experience and App latency`)
 
 ## Why this library ? and its Use cases 
 
