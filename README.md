@@ -75,10 +75,10 @@ In this libraray we implement a **Intent.createChooser()** within app with possi
 
 <h2>How to integrate the library in your app?</h2>
 
-In order to import a .aar library:</br>
+In order to import .AAR library Download it from link below:</br>
 
-```Download Library
-Download ".AAR" https://github.com/MaazArfi/Custom-Intent.createChooser-Android/raw/main/MSFCustomIntentLibrary.aar
+```
+https://github.com/MaazArfi/Custom-Intent.createChooser-Android/raw/main/MSFCustomIntentLibrary.aar
 ```
 
 
