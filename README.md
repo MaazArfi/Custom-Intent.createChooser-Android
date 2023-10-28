@@ -73,59 +73,141 @@ In this libraray we implement a **Intent.createChooser()** within app with possi
 3. Write your own strong logic for intent choosers.
 4. etc.
 
+<h2>How to integrate the library in your app?</h2>
+
+In order to import a .aar library:</br>
+
+```Download Library
+Download ".AAR" https://msftechsolutions.co.in/Library/MSFCustomIntentLibrary.aar
+```
 
 
-### How integrate it?
+After Downloading Switch to project view right click on project then :</br>
+1) New>Directory</br>
+2) Create a directory called "Library" and paste the downloaded "MSFCustomIntentLibrary.aar" file.</br>
+3) Sync Project..</br>
 
-  ```sh
-   Download "aar" https://msftechsolutions.co.in/Library/MSFCustomIntentLibrary.aar
-   ```
+It will look like as shown below.
 
 <img
-        src="https://github.com/MaazArfi/Custom-android.intent.action.VIEW/blob/master/app/src/main/assets/msf_screen.jpeg?raw=true"
-        alt="Screenshot"
-        width="25%"
-      />
+src="https://github.com/MaazArfi/Custom-Intent.createChooser-Android/blob/main/directory-library-installation.png?raw=true"
+alt="Screenshot"
+width="25%"/>
 
-### Build the App manually
+<b>Gradle Dependecy</b></br>
 
-#### Stacks
+```gradle
+dependencies {
+        implementation files ('../library/MSFCustomIntentLibrary.aar')
+}
+```
 
-This app is partially written in Java,Kotlin,c++,Cmake so it's nessesary to [install and configure the NDK and CMake](https://developer.android.com/studio/projects/install-ndk) first.
+### Create Instance object
 
-#### Install android-ndk
+Create Instance of library engine:
+```
+MSFCustomIntentLibraryEngine msfCustomIntentLibraryEngine;
+```
 
-Please refer to [any specificandroid-ndk](https://developer.android.com/studio/projects/install-ndk#specific-version).
+### Initialise
 
-You can check if it is installed by running `./gradlew cargoBuild`. If it succeeded, you will see libtwoyi.so in `app/src/main/jniLibs/arm64-v8a`.
+Initialise the engine with object:
 
-PS. Prefferd is to use ndk v25 or lower, otherwise it may fail.
+Initialising the engine will take 2 parameters.
+1. Context  (Pass the current context or its object).
+2. boolean  (Pass true or false passing true will make the library work else passing false will make the library silent or pause).
 
-#### Configure a specific version of CMake
+```java
+msfCustomIntentLibraryEngine = new MSFCustomIntentLibraryEngine(MainActivity.this, true); 
+```
 
-To set the CMake version, add the following to your module's build.gradle file:
+### Add Packages
 
-android {
-    ...
-    externalNativeBuild {
-        cmake {
-            ...
-            version "cmake-version"
-        }
+Add application packages by pointing the declared engine object and call method: setApplicationPackage().
+
+Please note : You can pass unlimited number of package names as much as you want there is no limit take a look at the sample code below.
+
+```java
+msfCustomIntentLibraryEngine.setApplicationPackage("com.instagram.android");
+msfCustomIntentLibraryEngine.setApplicationPackage("com.klook");
+msfCustomIntentLibraryEngine.setApplicationPackage("com.whatsapp");
+msfCustomIntentLibraryEngine.setApplicationPackage("com.snapchat.android");
+```
+
+### Calling Custom Intent Finally
+
+Call Custom Intent by LoadMSFCustomIntentLib() method.
+This method will take 2 parameters and has 1 interface attached.
+
+1. Parameters  (1st Pass the current context or its object and 2nd Pass a text it will show on the bottom of intent or if you dont want pass null otherwise).
+2. Interface  (As soon as you pass these 2 params it will ask for interface implementation just write "new" it will autoshow "new AppsAdapter.OnItemClickListener {...}" just hit enter).
+
+PS :- This custom intent is buld on "BottomSheetDialogFragment" inside library so at the end of method you need to call ".show();" method of BottomSheetDialogFragment.
+
+This method will take 2 parameters.
+1. FragmentManager (Just simply pass "getSupportFragmentManager()").
+2. String tag  (Simply enter **MSF_SHEET_LIBRARY_TAG**).
+   
+**Important note** in the String Tag you cannot pass any tag.
+
+This ibrary will only allow "MSF_SHEET_LIBRARY_TAG" as tag.
+
+Otherwise it will show a toast message "Wrong initialisation tag used."
+
+Look at the sample code below.
+
+```java
+new LoadMSFCustomIntentLib(MainActivity.this, "Library Written by: MaazArfi", new AppsAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(AllApps allApps, int i) {
+                Toast.makeText(MainActivity.this, allApps.getName(), Toast.LENGTH_SHORT).show();
+            }
+        }).show(getSupportFragmentManager(), "MSF_SHEET_LIBRARY_TAG");
+```
+
+This "allApps" object holds all the data of apps like : Name , icon , size , installation date , etc.
+
+### Full Sample code 
+
+```java
+public class MainActivity extends AppCompatActivity {
+
+    //Declare Button instance object
+    Button button;
+    //Create library instance object
+    MSFCustomIntentLibraryEngine msfCustomIntentLibraryEngine;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        //Initialise button and bind
+        button = findViewById(R.id.load);
+
+        //Initialise library with declared object and pass necessary parameters
+        msfCustomIntentLibraryEngine = new MSFCustomIntentLibraryEngine(MainActivity.this, true);
+        //Set the package names of the apps which you want to display in the intent
+        msfCustomIntentLibraryEngine.setApplicationPackage("com.instagram.android");
+        msfCustomIntentLibraryEngine.setApplicationPackage("com.klook");
+
+        //Set onclick listener on the button
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Load the custom intent and pass necessary parameters
+                new LoadMSFCustomIntentLib(MainActivity.this, "Library Written by: MaazArfi", new AppsAdapter.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AllApps allApps, int i) {
+                        //When user will click app display name or do desired stuff
+                        Toast.makeText(MainActivity.this, allApps.getName(), Toast.LENGTH_SHORT).show();
+                    }
+                }).show(getSupportFragmentManager(), "MSF_SHEET_LIBRARY_TAG");
+            }
+        });
     }
 }
-
-### Configure the NDK in your project
-
-Specify the version using the android.ndkVersion property in the module's build.gradle file, as shown in the following code sample.
-
-android {
-    ndkVersion "major.minor.build" // e.g.,  ndkVersion "21.3.6528147"
-}
-
-### Download this repository
-
-Download this repository and copy paste code or use it as "aar" library.
+```
 
 ### Build the app with Android Studio
 
