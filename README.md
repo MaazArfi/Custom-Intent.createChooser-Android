@@ -18,7 +18,7 @@
   </p>
   <p>
 
-[![contributions welcome](https://img.shields.io/badge/Contributions-welcome-brightgreen?logo=github)](CODE_OF_CONDUCT.md) [![Website](https://img.shields.io/badge/Website-available-brightgreen?logo=e)](https://github.com/MaazArfi/Custom-Intent.createChooser-Android/tree/main#readme)
+[![contributions welcome](https://img.shields.io/badge/Contributions-welcome-brightgreen?logo=github)](https://github.com/MaazArfi/Custom-Intent.createChooser-Android/pulls) [![Website](https://img.shields.io/badge/Website-available-brightgreen?logo=e)](https://github.com/MaazArfi/Custom-Intent.createChooser-Android/tree/main#readme)
   </p>
   <p>
     <sub>
