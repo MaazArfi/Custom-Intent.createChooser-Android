@@ -1,5 +1,5 @@
 <div align="center">
-    <p><b>A library that lets you display your choice of app in Intent.createChooser() without any restriction above Android N.</b></p>
+    <p><b>A library that lets you display your choice of app in Intent without any restriction above Android N.</b></p>
 </div>
 
 <div align="center">
@@ -12,7 +12,7 @@
   </p>
   <p>
     <b>
-      Display your choice of App in your Actionview Intent Using My Repository 😉
+      Display your choice of App in your Actionview Intent or Intent.createChooser() Using this libray 😉
     </b>
     <br/>
   </p>
