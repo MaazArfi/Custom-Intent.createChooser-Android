@@ -30,7 +30,7 @@
   </p>
   <br />
   <p>
-    <a href="https://twoyi.io">
+    <a href="https://github.com/MaazArfi/Custom-Intent.createChooser-Android/blob/main/msf_screen.jpeg">
       <img
         src="https://github.com/MaazArfi/Custom-Intent.createChooser-Android/blob/main/msf_screen.jpeg?raw=true"
         alt="Screenshot"
