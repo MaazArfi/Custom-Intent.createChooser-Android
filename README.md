@@ -150,7 +150,7 @@ This method will take 2 parameters.
    
 **Important note** in the String Tag you cannot pass any tag.
 
-This ibrary will only allow "MSF_SHEET_LIBRARY_TAG" as tag.
+This Library will only allow "MSF_SHEET_LIBRARY_TAG" as tag.
 
 Otherwise it will show a toast message "Wrong initialisation tag used."
 
